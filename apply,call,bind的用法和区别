@@ -1,0 +1,27 @@
+apply,call,bind的用法和区别(方法劫持)
+
+用途:手动改变this的指向
+
+区别：1.apply和call会使当前函数立即执行，bind会返回一个函数，后续需要时再调用
+
+2. call是apply的语法糖，只有传的参数不同，call中要传多个任意参数，apply只可以直接传数组或者类数组
+
+3. bind是为函数绑定一个this上下文
+
+规则: fn.apply(上下文环境，执行所需数组)
+
+     fn.call(上下文环境，执行所需单个参数)
+
+     fn.bind(上下文环境)
+
+ps：如果上下文的值为null，则使用全局对象代替，相当于没传上下文还用以前的
+
+apply可以将一个数组转换为一个参数列表([p1,p2,p3]转换为p1,p2,p3)
+
+   
+
+   var arr=[1,2,3,4]
+
+    console.log (Math.max.apply(null,arr))//4
+
+Math.max()只能传数字，可以使用apply将数组转为一个一个参数传入
